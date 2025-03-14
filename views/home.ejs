@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatApp</title>
+</head>
+<style>
+    th,td,tr{
+        border: 1px solid black;
+    }
+</style>
+<body>
+    <h3>All chats</h3>
+    <form method="GET" action="/home/new">
+        <button>New Chat</button>
+    </form>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>from</th>
+            <th>to</th>
+            <th>message</th>
+            <th>Created@</th>
+        </tr>
+        <%for(chat of chats){%>
+        <tr>
+            <td><%=chat._id%></td>
+            <td><%=chat.from%></td>
+            <td><%=chat.to%></td>
+            <td><%=chat.msg%></td>
+            <td><%=chat.created_at.toString().split(" ")[4]%><br> 
+                <%=chat.created_at.toString().split(" ").slice(0,4).join(" ")%>
+            </td>
+    </tr>
+    <%}%>
+    </table>
+</body>
+</html>
