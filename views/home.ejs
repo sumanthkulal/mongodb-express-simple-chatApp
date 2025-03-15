@@ -22,6 +22,7 @@
             <th>to</th>
             <th>message</th>
             <th>Created@</th>
+            <th>Edit/Delete</th>
         </tr>
         <%for(chat of chats){%>
         <tr>
@@ -31,6 +32,14 @@
             <td><%=chat.msg%></td>
             <td><%=chat.created_at.toString().split(" ")[4]%><br> 
                 <%=chat.created_at.toString().split(" ").slice(0,4).join(" ")%>
+            </td>
+            <td><form method="GET" action="/home/<%=chat._id%>/edit">
+                <button>Edit</button>
+                </form>
+                <form action="/home/<%=chat._id%>?_method=DELETE" method="POST">
+                    <button type="submit">Delete Chat</button>
+                </form>
+                
             </td>
     </tr>
     <%}%>
